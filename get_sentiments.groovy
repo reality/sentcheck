@@ -19,13 +19,13 @@ def props = new Properties()
 props.put("annotators", "tokenize, ssplit, pos, parse, sentiment")
 props.put("parse.maxtime", "20000")
 props.put("regexner.ignorecase", "true")
-props.put("depparse.nthreads", 8)
-props.put("ner.nthreads", 8)
-props.put("parse.nthreads", 8)
+props.put("depparse.nthreads", 50)
+props.put("ner.nthreads", 50)
+props.put("parse.nthreads", 50)
 def coreNLP = new StanfordCoreNLP(props)
 
 def fList = []
-new File('./metadata/').eachFile { f -> fList << f }
+new File('./mesh_metadata/').eachFile { f -> fList << f }
 def i = 0
 def out = []
 fList.each { f ->
@@ -65,5 +65,5 @@ fList.each { f ->
   }
 }
 
-new File('sentiments.txt').text = out.join('\n')
+new File('mesh_sentiments.txt').text = out.join('\n')
 
