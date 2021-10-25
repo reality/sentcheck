@@ -25,7 +25,7 @@ props.put("parse.nthreads", 50)
 def coreNLP = new StanfordCoreNLP(props)
 
 def fList = []
-new File('./mesh_metadata/').eachFile { f -> fList << f }
+new File('./metadata/').eachFile { f -> fList << f }
 def i = 0
 def out = []
 fList.each { f ->
@@ -65,5 +65,5 @@ fList.each { f ->
   }
 }
 
-new File('mesh_sentiments.txt').text = out.join('\n')
+new File('sentiments.txt').text = out.join('\n')
 
